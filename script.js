@@ -23,7 +23,7 @@ while (true) {
 
   // Validate the player's choice
   // If it's not a valid choice, ask the player to try again
-  if (!choices.includes(playerChoice)) {
+  if (!choices.join('|').includes(playerChoice.toLowerCase(), 'i')) {
     alert('Invalid choice, try again');
     continue;
   }
@@ -32,7 +32,7 @@ while (true) {
   let computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
   // Determine the result of the game based on the player's and computer's choices
-  let result = results[playerChoice][computerChoice];
+  let result = results[playerChoice.toLowerCase()][computerChoice.toLowerCase()];
 
   // Update the score based on the result
   if (result === 'win') {
@@ -54,3 +54,4 @@ while (true) {
 
 // The game has ended, so display the final score
 alert(`You won ${wins} times, tied ${ties} times and lost ${losses} times!`);
+
